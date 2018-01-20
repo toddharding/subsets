@@ -19,7 +19,7 @@ defmodule Subsets do
 
   def generate(list) do
     generate(list, [])
-    |> traverse_tree([])
+    |> flatten_tree([])
     |> Enum.uniq()
     |> Enum.map(fn x -> Enum.reverse(x) end)
   end
@@ -39,13 +39,13 @@ defmodule Subsets do
     %{left: left, right: right, new_element: new_element}
   end
 
-  def traverse_tree(%{left: left = %{}, right: right = %{}, new_element: new_element}, acc) do
-    acc = traverse_tree(left, acc)
-    acc = traverse_tree(right, acc)
+  defp flatten_tree(%{left: left = %{}, right: right = %{}, new_element: new_element}, acc) do
+    acc = flatten_tree(left, acc)
+    acc = flatten_tree(right, acc)
     [new_element | acc]
   end
 
-  def traverse_tree(%{left: left, right: right, new_element: new_element}, acc) do
+  defp flatten_tree(%{left: left, right: right, new_element: new_element}, acc) do
     stage_1 = [new_element | acc ]
     stage_2 = [left | stage_1]
     [right | stage_2]
