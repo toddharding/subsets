@@ -4,7 +4,9 @@ defmodule Subsets.Mixfile do
   def project do
     [
       app: :subsets,
-      version: "0.1.0",
+      version: "0.1.1",
+      description: description(),
+      package: package(),
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
       deps: deps()
@@ -20,9 +22,20 @@ defmodule Subsets.Mixfile do
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
+    []
+  end
+
+  defp description() do
+    "Subset/Sublist generator"
+  end
+
+  defp package() do
     [
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
+      # These are the default files included in the package
+      files: ["lib", "priv", "mix.exs", "README*", "readme*", "LICENSE*", "license*"],
+      maintainers: ["Todd Harding"],
+      licenses: ["BSD 3-Clause"],
+      links: %{"GitHub" => "https://github.com/toddharding/subsets"}
     ]
   end
 end
