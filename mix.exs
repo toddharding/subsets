@@ -22,7 +22,7 @@ defmodule Subsets.Mixfile do
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
-    []
+    [{:ex_doc, ">= 0.0.0", only: :dev}]
   end
 
   defp description() do
@@ -32,7 +32,7 @@ defmodule Subsets.Mixfile do
   defp package() do
     [
       # These are the default files included in the package
-      files: ["lib", "priv", "mix.exs", "README*", "readme*", "LICENSE*", "license*"],
+      files: ["lib", "mix.exs", "README*", "LICENSE"],
       maintainers: ["Todd Harding"],
       licenses: ["BSD 3-Clause"],
       links: %{"GitHub" => "https://github.com/toddharding/subsets"}
